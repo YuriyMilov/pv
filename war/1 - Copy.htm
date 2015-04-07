@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>Infinite Scroll Demo 1 - jQuery4u</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- scripts at bottom of page -->
+
+
+
+</head>
+<body class="demos">
+
+  <section id="content">
+
+ 
+
+<div id="container" class="transitions-enabled infinite-scroll clearfix">
+
+
+
+
+
+<div class='box col7'><img alt="Test Subject Blue" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428063418_120.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Jewel Academy" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1425025607_jewel-academy-2.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Magic Carrot 2" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428068170_120.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Secret Story: Hidden Objects" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427985111_secret-120x90.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Asterix and Friends" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1425456526_Thumb_Asterix_120x90.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Captain Finch" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428068735_120.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="CEO Spinner" class="tile-thumb" src="http://static3.spilcdn.com/tw/120X90/5/5/145955/20090715025255_CEO-Spinner.gif" height="90" width="120" /></div>
+<div class='box col7'><img alt="Easter Eggs Painting" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427984343_easteregg-120x90.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Baby Hazel: Easter Fun" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427984615_hazel-120x90.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Angry Birds Go!" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428130990_angry-birds-2.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Castle Knight" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428220941_castle-knight-2.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Brave Tomato" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428065845_120.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Uphill Rush 6" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427359563_20131121133730_Uphill-Rush-6_1.gif" height="90" width="120" /></div>
+<div class='box col7'><img alt="Anna Pool Celebration" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427982184_annapool_120x90.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Cooking With Emma: Tomato Quiche" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427982753_tomato-120x90.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="LIMBO: Online" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428130265_limbo-2.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Daily Hidden Object" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427894736_daily-hidden-object-2.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Lost Yeti" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1428053703_lost-yeti-2.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Timbermen Easter" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427968469_timbermeneaster_120x90.jpg" height="90" width="120" /></div>
+<div class='box col7'><img alt="Now &amp; Then: Elsa Sweet 16" class="tile-thumb" src="http://files.cdn.spilcloud.com/gms_s/1427893362_elsa16-120x90.jpg" height="90" width="120" /></div>
+
+
+
+
+</div> <!-- #container -->
+
+<nav id="page-nav">
+  <a href="pages2/2.html"></a>
+</nav>
+
+<script src="js/jquery-1.6.2.min.js"></script>
+<script src="js/jquery.masonry.min.js"></script>
+<script src="js/jquery.infinitescroll.min.js"></script>
+<script>
+  $(function(){
+
+    var $container = $('#container');
+
+    $container.imagesLoaded(function(){
+      $container.masonry({
+        itemSelector: '.box',
+        columnWidth: 100
+      });
+    });
+
+    $container.infinitescroll({
+      navSelector  : '#page-nav',    // selector for the paged navigation
+      nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
+      itemSelector : '.box',     // selector for all items you'll retrieve
+      loading: {
+          finishedMsg: 'No more pages to load.',
+          img: 'http://i.imgur.com/6RMhx.gif'
+        }
+      },
+      // trigger Masonry as a callback
+      function( newElements ) {
+        // hide new items while they are loading
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        // ensure that images load before adding to masonry layout
+        $newElems.imagesLoaded(function(){
+          // show elems now they're ready
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true );
+        });
+      }
+    );
+
+  });
+</script>
+
+  </section> <!-- #content -->
+
+
+</body>
+</html>

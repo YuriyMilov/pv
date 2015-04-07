@@ -1,0 +1,3 @@
+# Module pv
+# RPC service class, partial path of RPC policy file
+pv.client.GreetingService, F6C83C1C98B9869138D60429D47BA194.gwt.rpc

@@ -1,0 +1,2 @@
+serviceClass: pv.client.GreetingService
+path: F6C83C1C98B9869138D60429D47BA194.gwt.rpc

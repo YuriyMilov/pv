@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>scroll</servlet-name>
+    <servlet-class>pv.scroll</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>scroll</servlet-name>
+    <url-pattern>/pages/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>start</servlet-name>
+    <servlet-class>pv.start</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>start</servlet-name>
+    <url-pattern>/start</url-pattern>
+  </servlet-mapping>
+  
+  
+    <servlet>
+    <servlet-name>inf_scroll</servlet-name>
+    <servlet-class>pv.inf_scroll</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>inf_scroll</servlet-name>
+    <url-pattern>/inf_scroll</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>greetServlet</servlet-name>
+    <servlet-class>pv.server.GreetingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/pv/greet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>start</welcome-file>
+  </welcome-file-list>
+
+</web-app>
